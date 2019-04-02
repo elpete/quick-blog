@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  app:
+    image: ortussolutions/commandbox:lucee5
+    depends_on:
+      - postgres
+    environment:
+      PORT: 80
+      SSL_PORT: 443
+      DEBUG: "true"
+      HEALTHCHECK_URI: http://localhost:8080/
+      DB_HOST: postgres
+      DB_USER: quick_blog
+      DB_PASSWORD: quick_blog
+      DB_NAME: quick_blog
+    ports:
+      - "4080:80"
+      - "4443:443"
+    volumes:
+      - .:/app:delegated
+    expose:
+      - "80"
+      - "443"
+
+  postgres:
+    image: postgres:11.2
+    environment:
+      POSTGRES_USER: quick_blog
+      POSTGRES_PASSWORD: quick_blog
+      POSTGRES_DB: quick_blog
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"

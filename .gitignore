@@ -1,0 +1,17 @@
+# General Ignores + IDE
+.DS_Store
+settings.xml
+WEB-INF
+
+# logs
+logs/*.*
+
+node_modules
+
+## Ignored Dependencies
+coldbox/*
+testbox/*
+modules/*
+**/apidocs/**
+
+.env
