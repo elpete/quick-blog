@@ -43,7 +43,11 @@
 	</nav> <!---end navbar --->
 
 	<!---Container And Views --->
-	<div class="container">#renderView()#</div>
+    <div class="container">
+        #getInstance( "messagebox@cbmessagebox" ).renderIt()#
+
+        #renderView()#
+    </div>
 
 	<footer class="border-top py-3 mt-5">
 		<div class="container">

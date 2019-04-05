@@ -25,11 +25,17 @@
         "coldbox":"coldbox",
         "testbox":"testbox",
         "quick":"modules/quick/",
-        "cfmigrations":"modules/cfmigrations/"
+        "cfmigrations":"modules/cfmigrations/",
+        "cbvalidation":"modules/cbvalidation/",
+        "redirectBack":"modules/redirectBack/",
+        "cbmessagebox":"modules/cbmessagebox/"
     },
     "dependencies":{
         "coldbox":"^5.0.0",
-        "quick":"2.0.0-beta.10"
+        "quick":"2.0.0-beta.10",
+        "cbvalidation":"^1.4.1+69",
+        "redirectBack":"^1.0.4",
+        "cbmessagebox":"^3..0.2+41"
     },
     "scripts":{},
     "cfmigrations":{
