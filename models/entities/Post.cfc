@@ -1,6 +1,6 @@
 component extends="quick.models.BaseEntity" {
 
-    property name="str" inject="@Str";
+    property name="str" inject="@Str" persistent="false";
 
     property name="id";
     property name="title";
@@ -11,6 +11,10 @@ component extends="quick.models.BaseEntity" {
 
     function author() {
         return belongsTo( "User" );
+    }
+
+    function scopeLatest( query ) {
+        query.orderBy( "created_date", "desc" );
     }
 
     function getTruncatedBody() {

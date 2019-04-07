@@ -89,8 +89,7 @@
 		};
 
 		//Register interceptors as an array, we need order
-		interceptors = [
-		];
+		interceptors = [];
 
 		/*
 		// module setting overrides
@@ -136,6 +135,12 @@
 	*/
 	function development(){
 		coldbox.customErrorTemplate = "/coldbox/system/includes/BugReport.cfm";
-	}
+    }
+
+    function afterConfigurationLoad() {
+        variables.controller.getInterceptorService().registerInterceptor(
+            interceptorClass = "interceptors.QueryTracker"
+        );
+    }
 
 }

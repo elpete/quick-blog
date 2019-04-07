@@ -41,21 +41,23 @@
         #renderView()#
     </div>
 
-	<footer class="border-top py-3 mt-5">
-		<div class="container">
-			<p class="float-right">
-				<a href="##"><i class="fas fa-arrow-up"></i> Back to top</a>
-			</p>
-			<p>
-				<a href="http://www.coldbox.org">ColdBox Platform</a> is a copyright-trademark software by
-				<a href="http://www.ortussolutions.com">Ortus Solutions, Corp</a>
-			</p>
-			<p>
-				Design thanks to
-				<a href="http://getbootstrap.com/">Twitter Boostrap</a>
-			</p>
+    <footer class="border-top py-3 mt-5">
+        <div class="container">
+            <cfif event.privateValueExists( "queries" )>
+                <h3>Queries:</h3>
+
+                <table class="table table-bordered">
+                    <tbody>
+                        <cfloop array="#prc.queries#" item="q">
+                            <tr>
+                                <td>#q.sql#</td>
+                            </tr>
+                        </cfloop>
+                    </tbody>
+                </table>
+            </cfif>
 		</div>
-	</footer>
+    </footer>
 
 	<!---js --->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

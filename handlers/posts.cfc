@@ -6,7 +6,7 @@ component {
     property name="flash" inject="coldbox:flash";
 
     function index( event, rc, prc ) {
-        prc.posts = postService.all();
+        prc.posts = postService.with( "author" ).all();
         event.setView( "posts/index" );
     }
 
