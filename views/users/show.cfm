@@ -6,6 +6,9 @@
     <h1>#prc.user.getEmail()#</h1>
 
     <dl>
+        <dt>Latest Post Title</dt>
+        <dd>#prc.user.getLatestPost().getTitle()#</dd>
+
         <dt>Created At</dt>
         <dd>#dateTimeFormat( prc.user.getCreatedDate(), "full" )#
 

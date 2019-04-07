@@ -5,7 +5,7 @@ component {
     property name="flash" inject="coldbox:flash";
 
     function index( event, rc, prc ) {
-        prc.users = userService.all();
+        prc.users = userService.withLatestPost().get();
         event.setView( "users/index" );
     }
 
@@ -41,7 +41,7 @@ component {
 
     function show( event, rc, prc ) {
         param rc.id = "";
-        prc.user = userService.findOrFail( rc.id );
+        prc.user = userService.withLatestPost().findOrFail( rc.id );
         event.setView( "users/show" );
     }
 

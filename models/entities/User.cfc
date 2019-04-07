@@ -11,12 +11,20 @@ component extends="quick.models.BaseEntity" {
         assignAttribute( "password", hash( password ) );
     }
 
-    function getMemento() {
-        return {
-            "id" = retrieveAttribute( "id" ),
-            "email" = retrieveAttribute( "email" ),
-            "createdDate" = dateFormat( retrieveAttribute( "createdDate" ), "dd mmm yyyy" )
-        };
+    function scopeWithLatestPost( query ) {
+        query.select( "users.*" )
+            .subselect( "latestPostId", function( query ) {
+                query.select( "id" )
+                    .from( "posts" )
+                    .whereColumn( "user_id", "users.id" )
+                    .orderBy( "created_date", "desc" )
+                    .limit( 1 );
+            } )
+            .with( "latestPost" );
+    }
+
+    function latestPost() {
+        return belongsTo( "Post", "latestPostId" );
     }
 
 }
