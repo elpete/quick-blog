@@ -46,7 +46,12 @@ component extends="tests.resources.BaseIntegrationSpec" {
             "passwordConfirmation" = "1234"
         };
         structAppend( params, overrides, true );
-        return params;
+        return params.map( function( key, value ) {
+            if ( isClosure( value ) || isCustomFunction( value ) ) {
+                return value();
+            }
+            return value;
+        } );
     }
 
 }
