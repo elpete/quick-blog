@@ -11,6 +11,10 @@ component extends="quick.models.BaseEntity" {
         assignAttribute( "password", hash( password ) );
     }
 
+    function posts() {
+        return hasMany( "Post", "user_id" );
+    }
+
     function scopeWithLatestPost( query ) {
         variables._nullValues[ "latestPostId" ] = "";
         query.select( "users.*" )

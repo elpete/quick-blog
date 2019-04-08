@@ -11,7 +11,9 @@
             <cfif isNull( prc.user.getLatestPost() )>
                 No posts yet!
             <cfelse>
-                #prc.user.getLatestPost().getTitle()#
+                <a href="#event.buildLink( "posts.#prc.user.getLatestPost().getId()#" )#">
+                    #prc.user.getLatestPost().getTitle()#
+                </a>
             </cfif>
         </dd>
 
@@ -21,4 +23,23 @@
         <dt>Last Modified At</dt>
         <dd>#dateTimeFormat( prc.user.getModifiedDate(), "full" )#
     </dl>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Excerpt</th>
+            </tr>
+        </thead>
+        <tbody>
+            <cfloop array="#prc.user.getPosts()#" index="post">
+                <tr>
+                    <td>
+                        <a href="#event.buildLink( "posts.#post.getId()#" )#">#post.getTitle()#</a>
+                    </td>
+                    <td>#post.getTruncatedBody()#</td>
+                </tr>
+            </cfloop>
+        </tbody>
+    </table>
 </cfoutput>
