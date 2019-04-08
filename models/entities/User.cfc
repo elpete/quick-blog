@@ -12,6 +12,7 @@ component extends="quick.models.BaseEntity" {
     }
 
     function scopeWithLatestPost( query ) {
+        variables._nullValues[ "latestPostId" ] = "";
         query.select( "users.*" )
             .subselect( "latestPostId", function( query ) {
                 query.select( "id" )

@@ -53,6 +53,39 @@ component {
         event.setView( "posts/show" );
     }
 
+    function edit( event, rc, prc ) {
+        param rc.id = "";
+        prc.post = postService.findOrFail( rc.id );
+        event.setView( "posts/edit" );
+    }
+
+    function update( event, rc, prc ) {
+        param rc.id = "";
+        var post = postService.findOrFail( rc.id );
+
+        var result = validateModel(
+            target = rc,
+            constraints = {
+                title = { required = true },
+                body = { required = true }
+            }
+        );
+
+        if ( result.hasErrors() ) {
+            flash.put( "errors", result.getAllErrorsAsStruct() );
+            messagebox.appendArray( result.getAllErrors(), "error" );
+            return redirectBack();
+        }
+
+        post.update( {
+            "title" = rc.title,
+            "body" = rc.body,
+            "modifiedDate" = now()
+        } );
+
+        relocate( "posts.#post.getId()#" );
+    }
+
     function delete( event, rc, prc ) {
         param rc.id = "";
         postService.findOrFail( rc.id ).delete();

@@ -4,7 +4,8 @@
     </a>
 
     <h1>#prc.post.getTitle()#</h1>
-    <h3>#prc.post.getAuthor().getEmail()#</h3>
+    <h3><small>By</small> #prc.post.getAuthor().getEmail()#</h3>
+    <a class="btn btn-small btn-default" href="#event.buildLink( "posts.#prc.post.getId()#.edit" )#">Edit</a>
 
     <p>#prc.post.getBody()#</p>
 

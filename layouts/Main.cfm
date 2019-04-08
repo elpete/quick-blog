@@ -3,7 +3,13 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>#event.getPrivateValue( "title", "Quick Blog" )#</title>
+    <title>
+        <cfif event.privateValueExists( "title" )>
+            #event.getPrivateValue( "title" )# &mdash; Quick Blog
+        <cfelse>
+            Quick Blog
+        </cfif>
+    </title>
 	<meta name="description" content="ColdBox Application Template">
     <meta name="author" content="Ortus Solutions, Corp">
 	<!---Base URL --->

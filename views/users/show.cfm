@@ -7,7 +7,13 @@
 
     <dl>
         <dt>Latest Post Title</dt>
-        <dd>#prc.user.getLatestPost().getTitle()#</dd>
+        <dd>
+            <cfif isNull( prc.user.getLatestPost() )>
+                No posts yet!
+            <cfelse>
+                #prc.user.getLatestPost().getTitle()#
+            </cfif>
+        </dd>
 
         <dt>Created At</dt>
         <dd>#dateTimeFormat( prc.user.getCreatedDate(), "full" )#
