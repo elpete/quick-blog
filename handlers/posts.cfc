@@ -6,11 +6,13 @@ component {
     property name="flash" inject="coldbox:flash";
 
     function index( event, rc, prc ) {
+        prc.title = "Posts";
         prc.posts = postService.with( "author" ).all();
         event.setView( "posts/index" );
     }
 
     function new( event, rc, prc ) {
+        prc.title = "New Post";
         prc.users = userService.all();
         if ( prc.users.isEmpty() ) {
             messagebox.info( "There are no users in the system.  Create one before creating a post." );
@@ -50,12 +52,14 @@ component {
     function show( event, rc, prc ) {
         param rc.id = "";
         prc.post = postService.findOrFail( rc.id );
+        prc.title = prc.post.getTitle();
         event.setView( "posts/show" );
     }
 
     function edit( event, rc, prc ) {
         param rc.id = "";
         prc.post = postService.findOrFail( rc.id );
+        prc.title = "Editing #prc.post.getTitle()#";
         event.setView( "posts/edit" );
     }
 
