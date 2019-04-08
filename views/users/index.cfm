@@ -10,7 +10,6 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Email</th>
                 <th>Latest Post Title</th>
                 <th>Created Date</th>
@@ -20,7 +19,7 @@
         <tbody>
             <cfif prc.users.isEmpty()>
                 <tr>
-                    <td colspan="5" class="text-center">
+                    <td colspan="4" class="text-center">
                         <p>No users yet</p>
                         <p>Why not create one now?</p>
                         <a href="#event.buildLink( "users.new" )#" class="btn btn-primary">
@@ -32,15 +31,16 @@
                     <tr>
                         <td>
                             <a href="#event.buildLink("users.#user.getId()#")#">
-                                #user.getId()#
+                                #user.getEmail()#
                             </a>
                         </td>
-                        <td>#user.getEmail()#</td>
                         <td>
                             <cfif isNull( user.getLatestPost() )>
                                 No posts yet!
                             <cfelse>
-                                #user.getLatestPost().getTitle()#
+                                <a href="#event.buildLink( "posts.#user.getLatestPost().getId()#" )#">
+                                    #user.getLatestPost().getTitle()#
+                                </a>
                             </cfif>
                         </td>
                         <td>#dateFormat( user.getCreatedDate(), "dd mmm yyyy" )#</td>

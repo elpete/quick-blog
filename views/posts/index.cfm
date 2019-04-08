@@ -10,7 +10,6 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Title</th>
                 <th>Body</th>
                 <th>Author</th>
@@ -22,7 +21,7 @@
         <tbody>
             <cfif prc.posts.isEmpty()>
                 <tr>
-                    <td colspan="7" class="text-center">
+                    <td colspan="6" class="text-center">
                         <p>No posts yet</p>
                         <p>Why not create one now?</p>
                         <a href="#event.buildLink( "posts.new" )#" class="btn btn-primary">
@@ -34,10 +33,9 @@
                     <tr>
                         <td>
                             <a href="#event.buildLink("posts.#post.getId()#")#">
-                                #post.getId()#
+                                #post.getTitle()#
                             </a>
                         </td>
-                        <td>#post.getTitle()#</td>
                         <td>#post.getTruncatedBody()#</td>
                         <td>#post.getAuthor().getEmail()#</td>
                         <td>#dateFormat( post.getCreatedDate(), "dd mmm yyyy" )#</td>

@@ -14,7 +14,7 @@
             </div>
 
             <div class="form-group">
-                <label for="user" class="control-label">User</label>
+                <label for="user" class="control-label">Author</label>
                 <select name="user_id" id="user" class="form-control">
                     <cfloop array="#prc.users#" item="user">
                         <option value="#user.getId()#">#user.getEmail()#</option>
