@@ -7,7 +7,9 @@
     <h3><small>By</small> <a href="#event.buildLink( "users.#prc.post.getAuthor().getId()#" )#">#prc.post.getAuthor().getEmail()#</a></h3>
     <a class="btn btn-small btn-default" href="#event.buildLink( "posts.#prc.post.getId()#.edit" )#">Edit</a>
 
-    <p>#prc.post.getBody()#</p>
+    <cfloop array="#prc.post.getParagraphs()#" index="paragraph">
+        <p>#paragraph#</p>
+    </cfloop>
 
     <dl>
         <dt>Created At</dt>

@@ -21,4 +21,8 @@ component extends="quick.models.BaseEntity" {
         return str.limitWords( super.getBody(), 15 );
     }
 
+    function getParagraphs() {
+        return super.getBody().split( "[\n\r]+" );
+    }
+
 }
