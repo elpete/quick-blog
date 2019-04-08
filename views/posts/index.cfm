@@ -37,7 +37,11 @@
                             </a>
                         </td>
                         <td>#post.getTruncatedBody()#</td>
-                        <td>#post.getAuthor().getEmail()#</td>
+                        <td>
+                            <a href="#event.buildLink( "users.#post.getAuthor().getId()#" )#">
+                                #post.getAuthor().getEmail()#
+                            </a>
+                        </td>
                         <td>#dateFormat( post.getCreatedDate(), "dd mmm yyyy" )#</td>
                         <td>
                             <a class="btn btn-primary" href="#event.buildLink( "posts.#post.getId()#.edit" )#">
