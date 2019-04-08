@@ -13,6 +13,20 @@
         </div>
 
         <div class="form-group">
+            <label for="user" class="control-label">Author</label>
+            <select name="user_id" id="user" class="form-control">
+                <cfloop array="#prc.users#" item="user">
+                    <option
+                        value="#user.getId()#"
+                        <cfif user.getId() EQ prc.post.getAuthor().getId()>selected</cfif>
+                    >
+                        #user.getEmail()#
+                    </option>
+                </cfloop>
+            </select>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>

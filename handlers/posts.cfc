@@ -60,6 +60,7 @@ component {
         param rc.id = "";
         prc.post = postService.findOrFail( rc.id );
         prc.title = "Editing #prc.post.getTitle()#";
+        prc.users = userService.all();
         event.setView( "posts/edit" );
     }
 
@@ -71,7 +72,8 @@ component {
             target = rc,
             constraints = {
                 title = { required = true },
-                body = { required = true }
+                body = { required = true },
+                user_id = { required = true }
             }
         );
 
@@ -84,6 +86,7 @@ component {
         post.update( {
             "title" = rc.title,
             "body" = rc.body,
+            "userId" = rc.user_id,
             "modifiedDate" = now()
         } );
 
