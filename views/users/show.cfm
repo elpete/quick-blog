@@ -32,14 +32,26 @@
             </tr>
         </thead>
         <tbody>
-            <cfloop array="#prc.user.getPosts()#" index="post">
+            <cfif prc.user.getPosts().isEmpty()>
                 <tr>
-                    <td>
-                        <a href="#event.buildLink( "posts.#post.getId()#" )#">#post.getTitle()#</a>
+                    <td colspan="2" class="text-center">
+                        <p>No posts yet</p>
+                        <p>Why not create one now?</p>
+                        <a href="#event.buildLink( "posts.new" )#" class="btn btn-primary">
+                            Create a New Post
+                        </a>
                     </td>
-                    <td>#post.getTruncatedBody()#</td>
                 </tr>
-            </cfloop>
+            <cfelse>
+                <cfloop array="#prc.user.getPosts()#" index="post">
+                    <tr>
+                        <td>
+                            <a href="#event.buildLink( "posts.#post.getId()#" )#">#post.getTitle()#</a>
+                        </td>
+                        <td>#post.getTruncatedBody()#</td>
+                    </tr>
+                </cfloop>
+            </cfif>
         </tbody>
     </table>
 </cfoutput>
