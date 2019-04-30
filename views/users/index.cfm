@@ -27,7 +27,7 @@
                         </a>
                     </td>
             <cfelse>
-                <cfloop array="#prc.users#" item="user">
+                <cfloop array="#prc.users#" index="user">
                     <tr>
                         <td>
                             <a href="#event.buildLink("users.#user.getId()#")#">

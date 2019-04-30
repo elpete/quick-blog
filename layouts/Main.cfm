@@ -54,7 +54,7 @@
 
                 <table class="table table-bordered">
                     <tbody>
-                        <cfloop array="#prc.queries#" item="q">
+                        <cfloop array="#prc.queries#" index="q">
                             <tr>
                                 <td>#q.sql#</td>
                             </tr>

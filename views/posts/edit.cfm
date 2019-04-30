@@ -15,7 +15,7 @@
         <div class="form-group">
             <label for="user" class="control-label">Author</label>
             <select name="user_id" id="user" class="form-control">
-                <cfloop array="#prc.users#" item="user">
+                <cfloop array="#prc.users#" index="user">
                     <option
                         value="#user.getId()#"
                         <cfif user.getId() EQ prc.post.getAuthor().getId()>selected</cfif>

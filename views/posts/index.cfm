@@ -29,7 +29,7 @@
                         </a>
                     </td>
             <cfelse>
-                <cfloop array="#prc.posts#" item="post">
+                <cfloop array="#prc.posts#" index="post">
                     <tr>
                         <td>
                             <a href="#event.buildLink("posts.#post.getId()#")#">
