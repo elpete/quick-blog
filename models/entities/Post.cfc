@@ -25,4 +25,9 @@ component extends="BaseEntity" {
         return super.getBody().split( "[\n\r]+" );
     }
 
+    function setExcerpt( excerpt ) {
+        assignAttribute( "body", excerpt );
+        return this;
+    }
+
 }

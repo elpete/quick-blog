@@ -1,33 +1,38 @@
-# Advanced Script Template
+# Quick Blog Example
 
-An advanced template with all the bells and whistles in script format
+This is an example blog application showcasing how to use Quick.
 
-## License
-Apache License, Version 2.0.
+## Getting Started
 
-## Important Links
+You need a datasource named `quick_blog` to use this example.  By default, it uses a Postgres database.
+Feel free to use a different database, Quick will AutoDiscover it for you. (It will need a reinit after changing the datasource.)
 
-Source Code
-- https://github.com/coldbox-templates/advanced-script
-
-## Quick Installation
-
-Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.  
-Just go into each template directory and type:
-
+If you want to get a datasource running quickly, get a Postgres database up and running with Docker:
 ```
-box install
-```
-
-This will setup all the needed dependencies for each application template.  You can then type:
-
-```
-box server start
+docker run -d \
+    --name quick_blog \
+    -p 5432:5432 \
+    -e POSTGRES_USER=quick_blog \
+    -e POSTGRES_PASSWORD=quick_blog \
+    -e POSTGRES_DB=quick_blog \
+    postgres:11.2
 ```
 
-And run the application.
+Make sure to fill in your `.env` file.  If you are using the docker datasource as above, it should look like this:
+```
+DB_CONNECTIONSTRING=jdbc:postgresql://localhost:5432/quick_blog
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=quick_blog
+DB_DATABASE=quick_blog
+DB_PASSWORD=quick_blog
+DB_CLASS=org.postgresql.Driver
 
----
- 
-###THE DAILY BREAD
- > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
+TEST_DB_CONNECTIONSTRING=jdbc:postgresql://localhost:5432/quick_blog
+TEST_DB_HOST=localhost
+TEST_DB_PORT=5432
+TEST_DB_USER=quick_blog
+TEST_DB_DATABASE=quick_blog
+TEST_DB_PASSWORD=quick_blog
+TEST_DB_CLASS=org.postgresql.Driver
+```
