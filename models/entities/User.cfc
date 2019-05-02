@@ -1,4 +1,6 @@
-component extends="quick.models.BaseEntity" {
+component extends="BaseEntity" {
+
+    property name="bcrypt" inject="@BCrypt" persistent="false";
 
     property name="id";
     property name="email";
@@ -8,7 +10,7 @@ component extends="quick.models.BaseEntity" {
     property name="lastLoggedIn" column="last_logged_in";
 
     function setPassword( password ) {
-        assignAttribute( "password", hash( password ) );
+        assignAttribute( "password", bcrypt.hashPassword( password ) );
     }
 
     function posts() {

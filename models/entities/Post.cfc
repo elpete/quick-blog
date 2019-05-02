@@ -1,4 +1,4 @@
-component extends="quick.models.BaseEntity" {
+component extends="BaseEntity" {
 
     property name="str" inject="@Str" persistent="false";
 
