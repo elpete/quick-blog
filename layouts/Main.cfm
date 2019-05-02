@@ -57,6 +57,7 @@
                         <cfloop array="#prc.queries#" index="q">
                             <tr>
                                 <td>#q.sql#</td>
+                                <td><cfdump var="#q.bindings.map( function( b ) { return b.value } )#" /></td>
                             </tr>
                         </cfloop>
                     </tbody>
